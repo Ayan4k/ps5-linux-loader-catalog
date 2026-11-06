@@ -1,0 +1,19 @@
+{
+  "name": "PS5 Linux Loader Catalog",
+  "payloads": [
+    {
+      "id": "ps5-linux-loader",
+      "name": "PS5 Linux Loader",
+      "filename": "ps5-linux-loader.elf",
+      "url": "https://github.com/soniciso1/ps5-linux-loader/releases/download/v2026.11.03-all10-13-pro/ps5-linux-loader.elf",
+      "description": "Boots Linux on PS5 Phat, Slim and Pro, firmware 10.xx-13.60 in one ELF (PS5 Pro GPU firmware offsets included). Enable Rest Mode USB power and disable etaHEN/kstuff first.",
+      "version": "v2026.11.03-all10-13-pro",
+      "last_update": "2026-11-03",
+      "category": "Linux",
+      "checksum": "03a8f761e1ef8a4702be0818b55b9dc37361e3c4d515bc52fd59e19c2b130d49",
+      "author": "soniciso1",
+      "details_url": "https://raw.githubusercontent.com/soniciso1/ps5-linux-loader/HEAD/README.md",
+      "source": "https://github.com/soniciso1/ps5-linux-loader/releases"
+    }
+  ]
+}

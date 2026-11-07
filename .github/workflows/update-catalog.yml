@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   update:
@@ -44,26 +43,14 @@ jobs:
 
           echo "changed=true" >> "$GITHUB_OUTPUT"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "sum=$SUM" >> "$GITHUB_OUTPUT"
 
-      - name: Open pull request
+      - name: Commit update
         if: steps.check.outputs.changed == 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.check.outputs.tag }}
-          SUM: ${{ steps.check.outputs.sum }}
         run: |
           set -euo pipefail
-          BRANCH="update-$TAG"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
           git commit -am "Update PS5 Linux Loader to $TAG"
-          git push origin "$BRANCH"
-          gh pr create --base main --head "$BRANCH" \
-            --title "Update PS5 Linux Loader to $TAG" \
-            --body "New upstream release: https://github.com/soniciso1/ps5-linux-loader/releases/tag/$TAG
-
-          SHA-256 of the downloaded file: \`$SUM\`
-
-          Compare it with the checksum in the release notes before merging."
+          git push origin main
